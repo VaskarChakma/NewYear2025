@@ -44,7 +44,7 @@ function startCountdown() {
         } else {
             clearInterval(countdownInterval);
             countdownElement.innerHTML = `🎉 The Countdown is finally Over! Welcome, 2025! 🌟<br>
-            As we step into this new year, let's embrace the endless opportunities it brings. May 2025 be filled with new adventures, meaningful connections, and the strength to overcome any challenges. Together, let's make this year unforgettable. Happy New Year to you and yours! 🎆`;
+            As we step into this new year, let's embrace the endless opportunities it brings. <br> May 2025 be filled with new adventures, meaningful connections, and the strength to overcome any challenges. <br> Together, let's make this year unforgettable. Happy New Year to you and yours! 🎆`;
         }
     }
 
