@@ -1,0 +1,62 @@
+/* Inline CSS for convenience */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(to bottom, #1e3c72, #2a5298);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 20px 0;
+    animation: glow 1.5s infinite alternate;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+#timer {
+    font-size: 4rem;
+    font-weight: bold;
+    background: #fff;
+    color: #000;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+#message {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    font-style: italic;
+    animation: fadeIn 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ff9, 0 0 20px #f90, 0 0 30px #f60;
+    }
+
+    to {
+        text-shadow: 0 0 20px #ff6, 0 0 30px #f90, 0 0 40px #f30;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
