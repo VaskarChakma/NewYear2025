@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎇 Welcome 2025: Countdown 🎆</title>
+    <style>
+        /* Inline CSS for convenience */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-align: center;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        #timer {
+            font-size: 4rem;
+            font-weight: bold;
+            background: #fff;
+            color: #000;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        #message {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-style: italic;
+            animation: fadeIn 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff9, 0 0 20px #f90, 0 0 30px #f60;
+            }
+
+            to {
+                text-shadow: 0 0 20px #ff6, 0 0 30px #f90, 0 0 40px #f30;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎉 Together Towards an Unforgettable 2025 🎆</h1>
+    <p>Let’s countdown 🕛</p>
+    <div id="timer">Loading...</div>
+    <div id="message"></div>
+
+    <script>
+        // Function to get the current Beijing time
+        function getBeijingTime() {
+            const now = new Date();
+            const utc = now.getTime() + now.getTimezoneOffset() * 60000; // UTC time
+            const beijingOffset = 8 * 60 * 60 * 1000; // Beijing is UTC+8
+            return new Date(utc + beijingOffset);
+        }
+
+        // Messages to display while counting down
+        const messages = [
+            "Stay positive, the New Year is coming soon! 🌟",
+            "Excitement is in the air, can you feel it? 🎆",
+            "Almost there... just a little longer! 🕛",
+            "Let’s make this New Year unforgettable! 🎉",
+            "Your dreams are just about to begin! ✨",
+            "The best is yet to come. Get ready! 🌟"
+        ];
+
+        // Countdown logic
+        function startCountdown() {
+            const countdownElement = document.getElementById('timer');
+            const messageElement = document.getElementById('message');
+            const targetDate = new Date('2025-01-01T00:00:00+08:00'); // Midnight, Beijing Time
+            let messageIndex = 0;
+
+            function updateCountdown() {
+                const now = getBeijingTime();
+                const timeDifference = targetDate - now;
+
+                if (timeDifference > 0) {
+                    const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+                    const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+                    const seconds = Math.floor((timeDifference / 1000) % 60);
+
+                    countdownElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+                    // Display messages while counting down
+                    messageElement.textContent = messages[messageIndex];
+
+                    // Update the message every 10 seconds
+                    if (seconds % 10 === 0 && messageIndex < messages.length - 1) {
+                        messageIndex++;
+                    }
+                } else {
+                    clearInterval(countdownInterval);
+                    countdownElement.innerHTML = `🎉 The Countdown is finally Over! Welcome, 2025! 🌟<br>
+                    As we step into this new year, let's embrace the endless opportunities it brings. May 2025 be filled with new adventures, meaningful connections, and the strength to overcome any challenges. Together, let's make this year unforgettable. Happy New Year to you and yours! 🎆`;
+                }
+            }
+
+            const countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown(); // Initialize immediately
+        }
+
+        startCountdown();
+    </script>
+</body>
+
+</html>
